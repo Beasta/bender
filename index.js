@@ -1,8 +1,7 @@
 var slackTerminal = require('slack-terminalize');
 	fs 		= require('fs');
-    keys	= JSON.parse(fs.readFileSync('keys.json', 'utf8'));
+    keys	= JSON.parse(fs.readFileSync(__dirname + '/keys.json', 'utf8'));
     apiToken = keys.apiToken;
-
 slackTerminal.init(apiToken, {
     // slack rtm client options here
     // more info at: https://github.com/slackhq/node-slack-client/blob/master/lib/clients/rtm/client.js

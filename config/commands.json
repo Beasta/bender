@@ -7,8 +7,8 @@
 	},
 	"day": {
 		"alias": [],
-		"endpoint": "https://rubygems.org/api/v1/gems/{gem}.json",
-		"help": "gem [gem-name]",
+		"endpoint": "#",
+		"help": "",
 		"description": "Fetches details of the specified Ruby gem"
 	},
 	"gem": {
@@ -17,7 +17,12 @@
 		"help": "gem [gem-name]",
 		"description": "Fetches details of the specified Ruby gem"
 	},
-
+	"testing": {
+		"alias": [],
+		"endpoint": "#",
+		"help": "its just for testing !!",
+		"description": "just for testing"
+	},
 	"error": {
 		"exclude": true
 	}

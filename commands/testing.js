@@ -1,28 +1,25 @@
 var request = require('request'),
-	util 	= require('../util');
-    keys	= JSON.parse(fs.readFileSync(__dirname + '/../keys.json', 'utf8'));
-	apiToken = keys.apiToken;
-	console.log('testing apiToken:', apiToken);
-console.log(apiToken);
-	module.exports = function (param) {
+	path 	= require('path'),
+	util 	= require('../util'),
+	Upload 	= require('node-slack-upload'),
+    keys	= JSON.parse(fs.readFileSync(__dirname + '/../keys.json', 'utf8')),
+	apiToken = keys.apiToken,
+	upload = new Upload(apiToken);
+module.exports = function (param) {
 	var	channel		= param.channel,
 		endpoint	= param.commandConfig.endpoint.replace('{gem}', param.args[0]);
-		
-	request(endpoint, function (err, response, body) {
-		var info = [];
-
-		if (!err && response.statusCode === 200) {
-			body = JSON.parse(body);
-
-			info.push('Gem: ' + body.name + ' - ' + body.info);
-			info.push('Authors: ' + body.authors);
-			info.push('Project URI: ' + body.project_uri);
+	upload.uploadFile({
+		file: fs.createReadStream(path.join(__dirname, '/../util.js')),
+		filetype: 'post',
+		title: 'util.js',
+		initialComment: '',
+		channels: 'bot-test'
+	}, function(err, data) {
+		if (err) {
+			console.error('error', err);
 		}
 		else {
-			info = ['No such gem found!'];
+			console.log('Uploaded file details: ', data);
 		}
-
-		util.postMessage(channel, info.join('\n\n'));
 	});
-
 };

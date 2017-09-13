@@ -4,6 +4,7 @@
   "description": "Sample app to show working with slack-terminalize module",
   "main": "index.js",
   "dependencies": {
+    "node-slack-upload": "^1.2.1",
     "request": "^2.65.0",
     "slack-terminalize": "^1.0.0"
   },

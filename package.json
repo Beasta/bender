@@ -8,6 +8,9 @@
     "request": "^2.65.0",
     "slack-terminalize": "^1.0.0"
   },
+  "nodemonConfig": {
+    "ignore": ["*data.json"]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

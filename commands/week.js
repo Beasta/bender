@@ -6,18 +6,17 @@ module.exports = function (param) {
 		endpoint	= param.commandConfig.endpoint.replace('{gem}', param.args[0]),
 		info 		= [],
 		data = JSON.parse(fs.readFileSync(__dirname + '/../data.json', 'utf8'));
-		// day = data.day;
-	if (!data.day) {
-		data.day = 1;
+	if (!data.week) {
+		data.week= 1;
 		fs.writeFileSync(__dirname + '/../data.json', JSON.stringify(data), 'utf8');
 	}
 	if (param.args[0]) {
-		data.day = param.args[0];
+		data.week = param.args[0];
 		fs.writeFileSync(__dirname + '/../data.json', JSON.stringify(data), 'utf8');
-		info.push('set day to: ', param.args[0]);
-		console.log('data.day',data.day);
+		info.push('set week to: ', param.args[0]);
+		console.log('data.week',data.week);
 	} else {
-		info.push(data.day);
+		info.push(data.week)
 	}
 	util.postMessage(channel, info.join(''));
 };

@@ -5,11 +5,17 @@
 		"help": "help [command](optional)",
 		"description": "To get help on all supported commands, or a specified command"
 	},
-	"day": {
+	"week": {
 		"alias": [],
 		"endpoint": "#",
-		"help": "",
-		"description": "Fetches details of the specified Ruby gem"
+		"help": "Type week to see what the current week is set to. Type 'week 5' to set to week 5.",
+		"description": "Sets or gets the current day"
+	},
+	"week": {
+		"alias": [],
+		"endpoint": "#",
+		"help": "Type day to see what the current day is set to. Type 'day 5' to set to day 5.",
+		"description": "Sets or gets the current week"
 	},
 	"gem": {
 		"alias": [],

@@ -7,7 +7,7 @@ var request = require('request'),
 	upload = new Upload(apiToken);
 module.exports = function (param) {
 	var	channel		= param.channel,
-		endpoint	= param.commandConfig.endpoint.replace('{gem}', param.args[0]);
+	endpoint	= param.commandConfig.endpoint.replace('{gem}', param.args[0]);
 	upload.uploadFile({
 		file: fs.createReadStream(path.join(__dirname, '/../util.js')),
 		filetype: 'post',
@@ -19,7 +19,8 @@ module.exports = function (param) {
 			console.error('error', err);
 		}
 		else {
-			console.log('Uploaded file details: ', data);
+			// console.log('Uploaded file details: ', data);
+			console.log('file uploaded');
 		}
 	});
 };

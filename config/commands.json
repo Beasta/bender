@@ -23,6 +23,12 @@
 		"help": "day [newDay](optional)",
 		"description": "Type day to see what the current day is set to. Type 'day 5' to set to day 5."
 	},
+	"fullOrPart": {
+		"alias": ["fop"],
+		"endpoint": "#",
+		"help": "fullOrPart [](optional)",
+		"description": "Set or get the full or part time schedule. Type fullOrPart to get the currently set schedule. Type fullOrPart full to set to fulltime."
+	},
 	"gem": {
 		"alias": [],
 		"endpoint": "https://rubygems.org/api/v1/gems/{gem}.json",

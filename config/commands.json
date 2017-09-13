@@ -5,17 +5,23 @@
 		"help": "help [command](optional)",
 		"description": "To get help on all supported commands, or a specified command"
 	},
-	"week": {
-		"alias": [],
+	"directory": {
+		"alias": ["dir"],
 		"endpoint": "#",
-		"help": "Type week to see what the current week is set to. Type 'week 5' to set to week 5.",
-		"description": "Sets or gets the current day"
+		"help": "directory [newDirectory](optional)",
+		"description": "Set or get the current directory for the FullStack-Lesson-Plans"
 	},
 	"week": {
 		"alias": [],
 		"endpoint": "#",
-		"help": "Type day to see what the current day is set to. Type 'day 5' to set to day 5.",
-		"description": "Sets or gets the current week"
+		"help": "week [newWeek](optional)",
+		"description": "Type week to see what the current week is set to. Type 'week 5' to set to week 5."
+	},
+	"day": {
+		"alias": [],
+		"endpoint": "#",
+		"help": "day [newDay](optional)",
+		"description": "Type day to see what the current day is set to. Type 'day 5' to set to day 5."
 	},
 	"gem": {
 		"alias": [],

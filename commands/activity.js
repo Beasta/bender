@@ -39,7 +39,7 @@ module.exports = function (param) {
       if (param.args[1] === 'f') { // upload entire folder
         util.zipper(filePath, activityFolder, param.channel, `${activityFolder}`,true, true);
       } else if (param.args[1] === 'u') { // upload the unsolved folder
-        folder = util.findDirectoryName(filePath, param.args[1]);
+        folder = util.findDirectoryName(filePath, 'unsolved');
         if (folder) {
           filePath += `/${folder}`
           util.zipper(filePath, folder, param.channel, `${activityFolder}-${folder}`, true, true);
@@ -47,7 +47,7 @@ module.exports = function (param) {
           util.postMessage(param.channel, 'There is no unsolved folder in this directory')
         }
       } else if (param.args[1] === 's') { // upload the solved folder
-        folder = util.findDirectoryName(filePath, param.args[1]);
+        folder = util.findDirectoryName(filePath, 'solved');
         if (folder) {
           filePath += `/${folder}`
           util.zipper(filePath, folder, param.channel, `${activityFolder}-${folder}`, true, true);

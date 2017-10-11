@@ -28,6 +28,7 @@ node_modules
 
 # the keys. see keys.json.example
 keys.json
-
+keys.json.dev
+keys.json.prod
 data.json
 .idea

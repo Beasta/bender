@@ -1,4 +1,9 @@
 {
-    "week": 1,
-    "day": 1
+  "week":"2",
+  "day":"1",
+  "directory":"\/Users\/username\/Code\/coding-boot-camp\/FullStack-Lesson-Plans",
+  "fullOrPart":"fullTime",
+  "contentFolderNumber":"03",
+  "contentFolderName":"03-interview-qs",
+  "users": ["U5UQLA3GV"]
 }

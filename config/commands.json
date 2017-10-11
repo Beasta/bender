@@ -9,7 +9,7 @@
 		"alias": ["dir"],
 		"endpoint": "#",
 		"help": "directory [newDirectory](optional)",
-		"description": "Set or get the current directory for the FullStack-Lesson-Plans"
+		"description": "Set or get the current directory for the FullStack-Lesson-Plans. \n ie - 'directory /Users/username/Fullstack-Lesson-Plans' \n tip: get the directory by finding the folder in terminal and typing 'pwd'"
 	},
 	"week": {
 		"alias": [],
@@ -23,12 +23,30 @@
 		"help": "day [newDay](optional)",
 		"description": "Type day to see what the current day is set to. Type 'day 5' to set to day 5."
 	},
+	"contentFolderNumber": {
+		"alias": ["cfn", "contentFolder", "exerciseFolderNumber", "exerciseFolder", "efn"],
+		"endpoint": "#",
+		"help": "contentFolderNumber [newDay](optional)",
+		"description": "Type 'contentFolderNumber' to see what the current folder number for exercises is set to. Type 'contentFolderNumber 05' to set the exercise folder 5."
+	},
+	"activity": {
+		"alias": ["act"],
+		"endpoint": "#",
+		"help": "activity [activityNumber]",
+		"description": "returns a folder for a certain act"
+	},
 	"fullOrPart": {
 		"alias": ["fop"],
 		"endpoint": "#",
 		"help": "fullOrPart [](optional)",
 		"description": "Set or get the full or part time schedule. Type fullOrPart to get the currently set schedule. Type fullOrPart full to set to fulltime."
 	},
+    "addUser": {
+      "alias": ["adduser", "au"],
+      "endpoint": "#",
+      "help": "addUser [userId]",
+      "description": "Add a user to verified users. Example: addUser U5UQLA3GV"
+    },
 	"gem": {
 		"alias": [],
 		"endpoint": "https://rubygems.org/api/v1/gems/{gem}.json",

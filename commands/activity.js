@@ -37,7 +37,7 @@ module.exports = function (param) {
 
     if (param.args[1]) { // no arguments passed
       if (param.args[1] === 'f') { // upload entire folder
-        util.zipper(filePath, activityFolder, param.channel, true, true);
+        util.zipper(filePath, activityFolder, param.channel, `${activityFolder}`,true, true);
       } else if (param.args[1] === 'u') { // upload the unsolved folder
         folder = util.findDirectoryName(filePath, param.args[1]);
         if (folder) {

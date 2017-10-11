@@ -50,7 +50,7 @@ var zipper = function (path, folder, channel, title, upload,  remove) {
   output.on('close', function () {
     console.log(archive.pointer() + ' total bytes');
     console.log('archiver has been finalized and the output file descriptor has closed.');
-    util.uploader(`${path}/${title}.zip`, channel, title, remove);
+    uploader(`${path}/${title}.zip`, channel, title, remove);
   });
 
   archive.on('error', function (err) {
@@ -101,7 +101,7 @@ var isValidUser = function (user, verfiedUsers) {
   if (verfiedUsers) {
     validUser = !!verfiedUsers.find(thisUser => user === thisUser);
   } else {
-    util.postMessage(param.channel, 'Please add a verified user')
+    postMessage(param.channel, 'Please add a verified user')
   }
   return validUser;
 }

@@ -7,9 +7,7 @@ var _helpAll = function (param) {
 		index,
     response = [],
 		command;
-  var data = JSON.parse(fs.readFileSync(__dirname + '/../data.json', 'utf8'));
-  var validUser = util.isValidUser(param.user, data.users);
-  if (validUser) {
+  // var validUser =true;
     index = 1;
     for (name in commands) {
       command = commands[name];
@@ -20,9 +18,6 @@ var _helpAll = function (param) {
     }
 
     return response.join('\n\n');
-  } else {
-    util.postMessage(param.channel, 'you are not a valid user');
-  }
 };
 
 var _helpCommand = function (name) {
@@ -32,15 +27,21 @@ var _helpCommand = function (name) {
 };
 
 module.exports = function (param) {
+  var data = JSON.parse(fs.readFileSync(__dirname + '/../data.json', 'utf8'));
+  var validUser = util.isValidUser(param.user, data.users);
 	var	channel		= param.channel,
 		response;
 
-	if (!param.args.length) {
-		response = _helpAll();
-	}
-	else {
-		response = _helpCommand(param.args[0]);
-	}
+	if (validUser) {
+    if (!param.args.length) {
+      response = _helpAll(param);
+    }
+    else {
+      response = _helpCommand(param.args[0]);
+    }
+    util.postMessage(channel, response);
+  } else {
+	  util.postMessage(channel, 'Not a valid user');
+  }
 
-	util.postMessage(channel, response);
 };

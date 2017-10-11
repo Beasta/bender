@@ -13,7 +13,6 @@ var trim 	= require('trim'),
       like this: "Activity 5 u"`;
 module.exports = function (param) {
   var filePath,
-      prevFilePath,
       folderType,
       dayFolder,
       activityFolder,
@@ -32,7 +31,6 @@ module.exports = function (param) {
     dayFolder = util.findDirectoryName(filePath, data.week);
     filePath += `/${dayFolder}/01-Activities`;
     activityFolder = util.findDirectoryName(filePath, param.args[0]);
-    prevFilePath = filePath;
     filePath += `/${activityFolder}`
 
     if (param.args[1]) { // no arguments passed

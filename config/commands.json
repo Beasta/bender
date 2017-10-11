@@ -23,12 +23,6 @@
 		"help": "day [newDay](optional)",
 		"description": "Type day to see what the current day is set to. Type 'day 5' to set to day 5."
 	},
-	"contentFolderNumber": {
-		"alias": ["cfn", "contentFolder", "exerciseFolderNumber", "exerciseFolder", "efn"],
-		"endpoint": "#",
-		"help": "contentFolderNumber [newDay](optional)",
-		"description": "Type 'contentFolderNumber' to see what the current folder number for exercises is set to. Type 'contentFolderNumber 05' to set the exercise folder 5."
-	},
 	"activity": {
 		"alias": ["act"],
 		"endpoint": "#",
@@ -47,18 +41,6 @@
       "help": "addUser [userId]",
       "description": "Add a user to verified users. Example: addUser U5UQLA3GV"
     },
-	"gem": {
-		"alias": [],
-		"endpoint": "https://rubygems.org/api/v1/gems/{gem}.json",
-		"help": "gem [gem-name]",
-		"description": "Fetches details of the specified Ruby gem"
-	},
-	"testing": {
-		"alias": [],
-		"endpoint": "#",
-		"help": "its just for testing !!",
-		"description": "just for testing"
-	},
 	"error": {
 		"exclude": true
 	}

@@ -30,10 +30,21 @@ var postMessage = function (channel, response, format) {
 var findDirectoryName = function (dataDirectory, partialFolderName) {
   var files;
   var filePath;
+  var fullFileNumber;
+  var re;
   partialFolderName = partialFolderName || "";
   partialFolderName = partialFolderName.toUpperCase();
   files = listFiles(dataDirectory);
-  filePath = files.find(file => file.toUpperCase().search(partialFolderName) !== -1)
+ // handle search different if its a number, don't want a 12 to match a 112, numbers must match exactly.
+  if (Number(partialFolderName)) {
+    re = /[^-]*/; // regex to find everything up to the -
+    fullFileNumber = re.exec(partialFolderName);
+    filePath = files.find(file => {
+      return Number(re.exec(file)) === Number(fullFileNumber);
+    })
+  } else { // searching for something other than a number, any partial match returns
+    filePath = files.find(file => file.toUpperCase().search(partialFolderName) !== -1)
+  }
   return filePath;
 }
 var listFiles = function (path) {
@@ -87,7 +98,7 @@ var uploader = function (zipFilePath, channel, title, remove) {
       postMessage(channel, info.join(''));
     }
     else {
-      console.log('Uploaded file details: ', data);
+      // console.log('Uploaded file details: ', data);
       console.log('file uploaded');
       if (remove) {
         fs.unlinkSync(zipFilePath);

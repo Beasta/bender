@@ -35,12 +35,18 @@
 		"help": "fullOrPart [](optional)",
 		"description": "Set or get the full or part time schedule. Type fullOrPart to get the currently set schedule. Type fullOrPart full to set to fulltime."
 	},
-    "addUser": {
-      "alias": ["adduser", "au"],
-      "endpoint": "#",
-      "help": "addUser [userId]",
-      "description": "Add a user to verified users. Example: addUser U5UQLA3GV"
-    },
+	"addUser": {
+		"alias": ["adduser", "au"],
+		"endpoint": "#",
+		"help": "addUser [userId]",
+		"description": "Add a user to verified users. Example: addUser U5UQLA3GV"
+	},
+	"thanks": {
+		"alias": ["Thanks"],
+		"endpoint": "#",
+		"help": "thanks helpie",
+		"description": "Just try it"
+	},
 	"error": {
 		"exclude": true
 	}

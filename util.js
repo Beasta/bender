@@ -16,10 +16,10 @@ var archiver = require('archiver');
  * 
  */
 var postMessage = function (channel, response, format) {
-  console.log("posting message");
-	format = format || true;
+	if (format !== false) {
+	  format = true;
+  }
 	response = (format && '```' + response + '```') || response;
-
     // more on this API here: https://api.slack.com/methods/chat.postMessage
 	webClient.chat.postMessage(channel, response, {
 		as_user: true

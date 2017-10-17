@@ -18,7 +18,8 @@ module.exports = function (param) {
       activityFolder,
       folder,
       validUser,
-      data;
+      data,
+      parentFilePath;
   data = JSON.parse(fs.readFileSync(__dirname + '/../data.json', 'utf8'));
   if (!data.directory) {
     data.directory = "";
@@ -31,16 +32,17 @@ module.exports = function (param) {
     dayFolder = util.findDirectoryName(filePath, data.week);
     filePath += `/${dayFolder}/01-Activities`;
     activityFolder = util.findDirectoryName(filePath, param.args[0]);
+    parentFilePath = filePath;
     filePath += `/${activityFolder}`
 
     if (param.args[1]) { // no arguments passed
       if (param.args[1] === 'f') { // upload entire folder
-        util.zipper(filePath, activityFolder, param.channel, `${activityFolder}`,true, true);
+        util.zipper(filePath, activityFolder, param.channel, `${activityFolder}`, parentFilePath, true, true);
       } else if (param.args[1] === 'u') { // upload the unsolved folder
         folder = util.findDirectoryName(filePath, 'unsolved');
         if (folder) {
           filePath += `/${folder}`
-          util.zipper(filePath, folder, param.channel, `${activityFolder}-${folder}`, true, true);
+          util.zipper(filePath, folder, param.channel, `${activityFolder}-${folder}`, parentFilePath, true, true);
         } else {
           util.postMessage(param.channel, 'There is no unsolved folder in this directory')
         }
@@ -48,7 +50,7 @@ module.exports = function (param) {
         folder = util.findDirectoryName(filePath, 'solved');
         if (folder) {
           filePath += `/${folder}`
-          util.zipper(filePath, folder, param.channel, `${activityFolder}-${folder}`, true, true);
+          util.zipper(filePath, folder, param.channel, `${activityFolder}-${folder}`, parentFilePath, true, true);
         } else { // no solved folder available
           util.postMessage(param.channel, 'There is no solved folder in this directory')
         }

@@ -54,14 +54,14 @@ var listFiles = function (path) {
   })
   return files;
 }
-var zipper = function (path, folder, channel, title, upload,  remove) {
-  output = fs.createWriteStream(`${path}/${title}.zip`);
+var zipper = function (path, folder, channel, title, parentPath, upload,  remove) {
+  output = fs.createWriteStream(`${parentPath}/${title}.zip`);
   archive = archiver('zip');
 
   output.on('close', function () {
     console.log(archive.pointer() + ' total bytes');
     console.log('archiver has been finalized and the output file descriptor has closed.');
-    uploader(`${path}/${title}.zip`, channel, title, remove);
+    uploader(`${parentPath}/${title}.zip`, channel, title, remove);
   });
 
   archive.on('error', function (err) {

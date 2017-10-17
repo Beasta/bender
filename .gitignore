@@ -32,3 +32,5 @@ keys.json.dev
 keys.json.prod
 data.json
 .idea
+.DS_store
+

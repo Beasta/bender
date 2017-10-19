@@ -1,5 +1,5 @@
 var slackTerminal = require('slack-terminalize');
-	fs 		= require('fs');
+	  fs 		= require('fs');
     keys	= JSON.parse(fs.readFileSync(__dirname + '/keys.json', 'utf8'));
     apiToken = keys.apiToken;
 slackTerminal.init(apiToken, {

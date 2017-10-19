@@ -17,6 +17,7 @@ module.exports = function (param) {
   var filePath,
       folderType,
       dayFolder,
+      actOrHomework,
       activityFolder,
       folder,
       validUser,
@@ -29,13 +30,43 @@ module.exports = function (param) {
 
   validUser = util.isValidUser(param.user, data.users);
   if (validUser) {
+    // all this navigation should be recursive
     folderType = util.findDirectoryName(data.directory, '01')
     filePath = `${data.directory}/${folderType}`;
     dayFolder = util.findDirectoryName(filePath, data.week);
-    filePath += `/${dayFolder}/01-Activities`;
+    filePath += `/${dayFolder}`;
+    console.log('filePath', filePath);
+    actOrHomework = util.findDirectoryName(filePath, '01'); // defaulting to activity (01) for now
+    console.error('actOrHomework', actOrHomework);
+    if (actOrHomework) {
+      filePath += `/${actOrHomework}`;
+      console.trace('filePath', filePath);
+    } else { //language specific folders aren't numbered
+      if (data.language) {
+        const fileNameExists = !!util.findDirectoryName(filePath, data.language)
+        console.log('fileNameExists', fileNameExists);
+        if (fileNameExists) {
+          filePath += `/${data.language}/01-Activities`;
+        } else {
+          let message = `current language is set to ${data.language}. A folder could not be found for it.`;
+          message += '\nlanguage options:\n';
+          message += JSON.stringify(util.listFiles(filePath));
+          util.postMessage(param.channel, message);
+          return;
+        }
+      } else {
+        let message = `current language is set to ${data.language}. A folder could not be found for it.`;
+        message += 'set the current language like this \`language Java\`';
+        message += '\nlanguage options:\n';
+        message += JSON.stringify(util.listFiles(filePath));
+        util.postMessage(param.channel, message);
+        return ;
+      }
+    }
     activityFolder = util.findDirectoryName(filePath, param.args[0]);
     parentFilePath = filePath;
     filePath += `/${activityFolder}`
+    console.log('filePath', filePath);
 
     if (param.args[1]) { // no arguments passed
       if(typeof param.args[1] === 'string') {
